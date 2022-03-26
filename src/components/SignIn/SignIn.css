@@ -1,0 +1,28 @@
+.SignInMain {
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.SignInLabel {
+  font-size: 4em;
+  line-height: 100px;
+}
+
+.SignInColor {
+  color: #052b12;
+}
+
+.SignIn-TextBox {
+  height: 3rem;
+  background-color: #052b12;
+  border: 0;
+}
+
+::placeholder {
+  color: white;
+  opacity: 1;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-family: "Lexend Deca";
+}
