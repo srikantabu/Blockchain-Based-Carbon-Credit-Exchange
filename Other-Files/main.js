@@ -9,6 +9,8 @@ class Block{
         this.dataHash = this.getHash();
         this.previousHash=previousHash;
         this.hash=this.calculateHash();
+        this.ownerName=""
+        this.status=""
     }
  //To create Hash based on all the details
   calculateHash() {
@@ -74,6 +76,19 @@ class Blockchain{
         //if (isDataHashExist(newBlock.dataHash) == false) {
                 this.chain.push(newBlock);
         //    }
+    }
+
+    //To Trasnfer the owernship
+    transferBlock(newDatahash){
+        for(let i=1;i<this.chain.length; i++){
+            const currentBlock=this.chain[i];
+            
+            if(currentBlock.hash == transferHash){
+                //New Block or Change the existing block
+                //Status change no more further chaanges
+            }
+
+        }
     }
     
 }
