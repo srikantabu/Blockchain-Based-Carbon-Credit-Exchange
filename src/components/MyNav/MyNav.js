@@ -2,10 +2,16 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
+import "./MyNav.css";
 
 const MyNav = () => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      variant="dark"
+      className="NavBackGround"
+    >
       <Container>
         <Navbar.Brand href="#home">BBCCx</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
