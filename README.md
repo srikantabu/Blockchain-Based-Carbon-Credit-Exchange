@@ -1,7 +1,5 @@
 A POC showing online DEMAT account and various function it provides for End-To-End transactions for Carbon Credits Trading. Each transaction and change of ownership of Carbon Credits are recorded in blockchain.
 
-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
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
