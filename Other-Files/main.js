@@ -1,7 +1,7 @@
 const SHA256 = require('crypto-js/sha256');
 class Block{
     //This class create blocks
-    constructor(index, data, previousHash = '') {
+    constructor(index, data, previousHash = '',ownerName) {
         this.index=index;
         this.previousHash = previousHash;
         this.timestamp = Date.now();
@@ -9,7 +9,7 @@ class Block{
         this.dataHash = this.getHash();
         this.previousHash=previousHash;
         this.hash=this.calculateHash();
-        this.ownerName=""
+        this.ownerName=ownerName
         this.status=""
     }
  //To create Hash based on all the details
@@ -30,7 +30,7 @@ class Blockchain{
 
     //To create Genesis Block
     createGenesisBlock(){
-        return new Block(0,"Genesis Block","0");
+        return new Block(0,"Genesis Block","0","");
     }
     //To find the last block
     getLatestBlock(){
@@ -97,9 +97,9 @@ class Blockchain{
 
 let objBC = new Blockchain();
 
-objBC.addBlock(new Block(1,"Here is the Data1"));
-objBC.addBlock(new Block(2,"Here is the Data2"));
-objBC.addBlock(new Block(3,"Here is the Data1"));
+objBC.addBlock(new Block(1,"Here is the Data1","","finny"));
+objBC.addBlock(new Block(2,"Here is the Data2","","SK"));
+objBC.addBlock(new Block(3,"Here is the Data1","","SD"));
 
 //console.log('Vaild?' + objBC.isChainValid());
 
