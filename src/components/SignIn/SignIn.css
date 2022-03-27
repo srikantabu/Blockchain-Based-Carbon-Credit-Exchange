@@ -2,6 +2,12 @@
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
+  font-weight: bold;
+}
+
+.MainPage {
+  height: 400px;
+  align-items: center;
 }
 
 .SignInLabel {
@@ -15,6 +21,7 @@
 
 .SignIn-TextBox {
   height: 3rem;
+  width: 20rem;
   background-color: #052b12;
   border: 0;
 }
@@ -25,4 +32,37 @@
   letter-spacing: 2px;
   font-size: 12px;
   font-family: "Lexend Deca";
+  font-weight: bold;
+}
+
+.ForgotPassword {
+  margin-left: 4rem;
+}
+
+.SignInButton {
+  background-color: #052b12;
+  border: 0;
+  width: 6rem;
+}
+
+@media (min-width: 600px) {
+  .SignIn-TextBox {
+    width: 30rem;
+  }
+
+  .ForgotPassword {
+    margin-left: 12rem;
+  }
+
+  .SignInButton {
+    width: 8rem;
+  }
+
+  .ml4 {
+    margin-left: 3rem !important;
+  }
+
+  .MainPage {
+    height: 500px;
+  }
 }
