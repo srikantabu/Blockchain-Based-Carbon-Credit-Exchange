@@ -25,19 +25,21 @@ const MyNav = () => {
               <Nav.Link href="#Link2">Link2</Nav.Link>
             </Nav>
             <Nav>
-              {/* <Nav.Link href="#Login">Sign In</Nav.Link>
-              <Nav.Link href="#Register">Register</Nav.Link> */}
-              <Link to="/signin">Sign In</Link>
-              <Link to="/register">Register</Link>
+              <Link to="/signin" className="nav-link">
+                Sign In
+              </Link>
+              <Link to="/register" className="nav-link">
+                Register
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
-        <Routes>
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/register" element={<SignUp />} />
-          <Route path="/" element={<div></div>} />
-        </Routes>
       </Navbar>
+      <Routes>
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/register" element={<SignUp />} />
+        <Route path="/" element={<div></div>} />
+      </Routes>
     </Router>
   );
 };
