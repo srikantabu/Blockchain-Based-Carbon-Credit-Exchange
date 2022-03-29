@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./SignIn.css";
+import "./SignUp.css";
 
-const SignIn = () => {
+const SignUp = () => {
   return (
     <div className="FlexCenter MainPage">
       <div class="container">
@@ -58,4 +58,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
