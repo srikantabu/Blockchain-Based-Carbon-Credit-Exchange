@@ -3,7 +3,7 @@ import "./SignIn.css";
 
 const SignIn = () => {
   return (
-    <div className="FlexCenter MainPage">
+    <div className="FlexCenter SignInMainPage">
       <div class="container">
         <div class="row">
           <div class="col-md-7 col-lg-6 mx-auto">

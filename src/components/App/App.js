@@ -6,6 +6,14 @@ const App = () => {
     document.title = "BBCCX";
   }, []);
   return <MyNav />;
+  // return (
+  //   <div>
+  //     <Foorter></Foorter>
+  //     <MySignIN></MySignIN>
+      // <MySignIN></MySignIN>
+  //   </div>
+
+  // );
 };
 
 export default App;
