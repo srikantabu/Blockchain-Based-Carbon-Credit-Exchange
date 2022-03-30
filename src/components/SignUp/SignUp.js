@@ -1,15 +1,64 @@
+import { render } from "@testing-library/react";
 import React, { useState } from "react";
+import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
 import { arrCountryCode } from "./CountryCode";
 import "./SignUp.css";
 
 const SignUp = () => {
   const [txtCountry, setCountry] = useState("");
   const [txtCountryCode, setCountryCode] = useState("");
+
   const changeCountryHandler = (event) => {
     let countryName = event.target.value;
-    let contryCode = countryName.split("(")[1].split(")")[0];
+    let contryCode = countryName.split("(")[1].split(")")[0] + " ";
     setCountryCode(contryCode);
     setCountry(event.target.value);
+  };
+
+  const [txtFirstName, setFirstName] = useState("");
+  const changeFirstNameHandler = (event) => {
+    setFirstName(event.target.value);
+  };
+
+  const [txtLastName, setLastName] = useState("");
+  const changeLastNameHandler = (event) => {
+    setLastName(event.target.value);
+  };
+
+  const [txtEmail, setEmail] = useState("");
+  const changeEmailHandler = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const [txtPassword, setPassword] = useState("");
+  const changePasswordHandler = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const [txtConfirmPassword, setConfirmPassword] = useState("");
+  const changeConfirmPasswordHandler = (event) => {
+    setConfirmPassword(event.target.value);
+  };
+
+  const [txtDOB, setDOB] = useState("");
+  const changeDOBHandler = (event) => {
+    setDOB(event.target.value);
+  };
+
+  const [txtOrganisationName, setOrganisationName] = useState("");
+  const changeOrganisationNameHandler = (event) => {
+    setOrganisationName(event.target.value);
+  };
+
+  const [chkAreYouAnOrganisation, setAreYouOrganisation] = useState(false);
+  const changeAreYouOrganisationHandler = (event) => {
+    setAreYouOrganisation(event.target.checked);
+    setOrganisationName("");
+  };
+
+  const [txtPhoneNumber, setPhoneNumber] = useState("");
+  const changePhoneNumberHandler = (event) => {
+    setPhoneNumber(event.target.value);
   };
 
   return (
@@ -26,6 +75,8 @@ const SignUp = () => {
                   className="form-control"
                   id="FirstName"
                   placeholder="First Name"
+                  value={txtFirstName}
+                  onChange={changeFirstNameHandler}
                 />
                 <label htmlFor="FirstName">First Name</label>
               </div>
@@ -35,6 +86,8 @@ const SignUp = () => {
                   className="form-control"
                   id="LastName"
                   placeholder="Last Name"
+                  value={txtLastName}
+                  onChange={changeLastNameHandler}
                 />
                 <label htmlFor="LastName">Last Name</label>
               </div>
@@ -45,6 +98,8 @@ const SignUp = () => {
                   className="form-control"
                   id="floatingInput"
                   placeholder="name@example.com"
+                  value={txtEmail}
+                  onChange={changeEmailHandler}
                 />
                 <label htmlFor="floatingInput">Email address</label>
               </div>
@@ -54,6 +109,8 @@ const SignUp = () => {
                   className="form-control"
                   id="floatingPassword"
                   placeholder="Password"
+                  value={txtPassword}
+                  onChange={changePasswordHandler}
                 />
                 <label htmlFor="floatingPassword">Password</label>
               </div>
@@ -61,9 +118,11 @@ const SignUp = () => {
               <div className="form-floating mb-3">
                 <input
                   type="password"
-                  className="form-control"
+                  className={txtPassword === txtConfirmPassword ? "form-control" : "form-control WrongPassword"}
                   id="ConfirmPassword"
                   placeholder="Password"
+                  value={txtConfirmPassword}
+                  onChange={changeConfirmPasswordHandler}
                 />
                 <label htmlFor="ConfirmPassword">Confirm Password</label>
               </div>
@@ -75,7 +134,7 @@ const SignUp = () => {
                   value={txtCountry}
                   onChange={changeCountryHandler}
                 >
-                  <option/>
+                  <option />
                   {arrCountryCode.map((item) => (
                     <option>{item.name + " (" + item.dial_code + ")"}</option>
                   ))}
@@ -84,15 +143,25 @@ const SignUp = () => {
                 <label htmlFor="Country">Country</label>
               </div>
 
-              <div className="form-floating mb-3">
+              <div className="form-floating mb-3 FlexCenter">
+                <input
+                  type="text"
+                  className="form-control CountryCodeTxtBox"
+                  id="CountryCode"
+                  value={txtCountryCode}
+                  style={{ marginRight:5 }}
+                />
                 <input
                   type="text"
                   className="form-control"
                   id="PhoneNumber"
                   placeholder="Phone Number"
-                  value={txtCountryCode}
+                  value={txtPhoneNumber}
+                  onChange={changePhoneNumberHandler}
                 />
-                <label htmlFor="PhoneNumber">Phone Number</label>
+                <label htmlFor="PhoneNumber" style={{ paddingLeft: 90 }}>
+                  Phone Number
+                </label>
               </div>
 
               <div className="form-floating mb-3">
@@ -101,6 +170,8 @@ const SignUp = () => {
                   className="form-control"
                   id="DOB"
                   placeholder="DOB"
+                  value={txtDOB}
+                  onChange={changeDOBHandler}
                 />
                 <label htmlFor="DOB">DOB</label>
               </div>
@@ -109,8 +180,9 @@ const SignUp = () => {
                 <input
                   className="form-check-input"
                   type="checkbox"
-                  value=""
+                  checked={chkAreYouAnOrganisation}
                   id="areYouAnOrganisation"
+                  onChange={changeAreYouOrganisationHandler}
                 />
                 <label
                   className="form-check-label"
@@ -120,15 +192,21 @@ const SignUp = () => {
                 </label>
               </div>
 
-              <div className="form-floating mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="OrganisationName"
-                  placeholder="Organisation Name"
-                />
-                <label htmlFor="OrganisationName">Organisation Name</label>
-              </div>
+              {chkAreYouAnOrganisation === true ? (
+                <div className="form-floating mb-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="OrganisationName"
+                    placeholder="Organisation Name"
+                    value={txtOrganisationName}
+                    onChange={changeOrganisationNameHandler}
+                  />
+                  <label htmlFor="OrganisationName">Organisation Name</label>
+                </div>
+              ) : (
+                <div></div>
+              )}
 
               <div className="d-grid">
                 <button className="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2">

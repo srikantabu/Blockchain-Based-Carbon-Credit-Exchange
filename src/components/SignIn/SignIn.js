@@ -2,6 +2,21 @@ import React, { useState } from "react";
 import "./SignIn.css";
 
 const SignIn = () => {
+  const [txtEmail, setEmail] = useState("");
+  const changeEmailHandler = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const [txtPassword, setPassword] = useState("");
+  const changePasswordHandler = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const [chkRememberPassword, setRememberPassword] = useState("");
+  const changeRememberPasswordHandler = (event) => {
+    setRememberPassword(event.target.checked);
+  };
+
   return (
     <div className="FlexCenter SignInMainPage">
       <div class="container">
@@ -15,6 +30,8 @@ const SignIn = () => {
                   class="form-control"
                   id="floatingInput"
                   placeholder="name@example.com"
+                  value={txtEmail}
+                  onChange={changeEmailHandler}
                 />
                 <label htmlFor="floatingInput">Email address</label>
               </div>
@@ -24,6 +41,8 @@ const SignIn = () => {
                   class="form-control"
                   id="floatingPassword"
                   placeholder="Password"
+                  value={txtPassword}
+                  onChange={changePasswordHandler}
                 />
                 <label htmlFor="floatingPassword">Password</label>
               </div>
@@ -32,7 +51,8 @@ const SignIn = () => {
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value=""
+                  checked={chkRememberPassword}
+                  onChange={changeRememberPasswordHandler}
                   id="rememberPasswordCheck"
                 />
                 <label class="form-check-label" htmlFor="rememberPasswordCheck">
