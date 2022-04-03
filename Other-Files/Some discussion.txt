@@ -1,0 +1,24 @@
+Steps needs to complete:
+•	All pages – Need content for all pages about our project.
+•	Complete website design end to end flow – 2days – 30/03
+•	Development (Front end) – 1 week – 08/04
+•	Development (Front end and Back end) – to be completed by 14/04
+•	Integration
+•	Testing – 2days
+Database design:
+•	Table UAM (User Access management).
+•	Table Transaction.
+•	Table File(Certificate) Management
+•	Table Bank Details
+•	Table Pool Details(Add/Remove) - 
+•	Table Carbon Credit Pricelist/min based on location
+•	Table CAP details
+•	Table Certificate verification (Approve/Reject) 
+
+
+
+Create Stubs (empty functions)
+
+
+
+
