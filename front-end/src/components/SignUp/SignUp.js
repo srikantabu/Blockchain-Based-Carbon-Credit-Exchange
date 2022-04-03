@@ -11,6 +11,7 @@ const SignUp = () => {
   const changeCountryHandler = (event) => {
     let countryName = event.target.value;
     let contryCode = countryName.split("(")[1].split(")")[0] + " ";
+
     setCountryCode(contryCode);
     setCountry(event.target.value);
   };
@@ -59,6 +60,49 @@ const SignUp = () => {
   const [txtPhoneNumber, setPhoneNumber] = useState("");
   const changePhoneNumberHandler = (event) => {
     setPhoneNumber(event.target.value);
+  };
+
+  const fnRegisterUser = async () => {
+    console.log(txtFirstName);
+    console.log(txtLastName);
+    console.log(txtEmail);
+    console.log(txtPassword);
+    console.log(txtCountry.split("(")[0]);
+    console.log(txtCountryCode);
+    console.log(txtPhoneNumber);
+    console.log(txtDOB);
+    console.log(chkAreYouAnOrganisation);
+    console.log(txtOrganisationName);
+    fetch("http://localhost:5000/api/addusers", {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, *cors, same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow", // manual, *follow, error
+      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify({
+        first_name: txtFirstName,
+        last_name: txtLastName,
+        email: txtEmail,
+        password: txtPassword,
+        country: txtCountry.split("(")[0],
+        country_code: txtCountryCode,
+        phone_number: txtPhoneNumber,
+        dob: txtDOB,
+        is_org: chkAreYouAnOrganisation,
+        org_name: txtOrganisationName === "" ? null : txtOrganisationName,
+      }), // body data type must match "Content-Type" header
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
@@ -118,7 +162,11 @@ const SignUp = () => {
               <div className="form-floating mb-3">
                 <input
                   type="password"
-                  className={txtPassword === txtConfirmPassword ? "form-control" : "form-control WrongPassword"}
+                  className={
+                    txtPassword === txtConfirmPassword
+                      ? "form-control"
+                      : "form-control WrongPassword"
+                  }
                   id="ConfirmPassword"
                   placeholder="Password"
                   value={txtConfirmPassword}
@@ -149,7 +197,7 @@ const SignUp = () => {
                   className="form-control CountryCodeTxtBox"
                   id="CountryCode"
                   value={txtCountryCode}
-                  style={{ marginRight:5 }}
+                  style={{ marginRight: 5 }}
                 />
                 <input
                   type="text"
@@ -209,7 +257,10 @@ const SignUp = () => {
               )}
 
               <div className="d-grid">
-                <button className="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2">
+                <button
+                  className="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2"
+                  onClick={fnRegisterUser}
+                >
                   Register
                 </button>
                 <div className="text-center">
