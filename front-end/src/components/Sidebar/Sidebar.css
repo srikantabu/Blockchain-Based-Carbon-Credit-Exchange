@@ -1,0 +1,43 @@
+.side-menu {
+  background-color: #060b26;
+  height: 100vh;
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: 350ms;
+  padding-top: 10px;
+}
+
+.side-text {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 0px 8px 16px;
+  list-style: none;
+  height: 60px;
+}
+
+.side-text a {
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 18px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 4px;
+}
+
+.side-text a:hover {
+  background-color: #1a83ff;
+}
+
+.side-menu-items {
+  width: 100%;
+  padding-left: 16px;
+}
+
+span {
+  margin-left: 16px;
+}
