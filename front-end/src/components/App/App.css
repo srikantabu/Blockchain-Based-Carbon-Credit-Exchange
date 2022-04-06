@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 0.6fr 3fr;
+  grid-template-rows: 60px 100%;
+  grid-template-areas:
+    "nav nav"
+    "sidebar main";
+}
+
+.grid-navbar {
+  background-color: aqua;
+  grid-area: nav;
+}
+
+.grid-sidebar {
+  background-color: brown;
+  grid-area: sidebar;
+}
+
+.grid-main {
+  background-color: chartreuse;
+  grid-area: main;
+}
