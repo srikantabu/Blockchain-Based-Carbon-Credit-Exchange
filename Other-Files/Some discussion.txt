@@ -12,7 +12,7 @@ Database design:
 •	Table Bank Details
 •	Table Pool Details(Add/Remove) - 
 •	Table Carbon Credit Pricelist/min based on location
-•	Table CAP details
+•	Table buyer details
 •	Table Certificate verification (Approve/Reject) 
 
 
