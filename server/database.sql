@@ -72,9 +72,50 @@ Insert into bank_details (user_id,account_number,ifsc_code,branch_name) values(
     'Kotak Bank MG Road'
 );
 
-SELECT 
-   *
-FROM 
-   information_schema.columns
-WHERE 
-   table_name = 'bank_details';
+SELECT * FROM information_schema.columns WHERE table_name = 'bank_details';
+
+CREATE TABLE blockchain_transactions (
+  transaction_hash VARCHAR(255) PRIMARY KEY,
+  prev_hash VARCHAR(255) NOT NULL,
+  seller_id VARCHAR (7) NOT NULL,
+  buyer_id VARCHAR (7) NULL,
+  carbon_credits int NOT NULL,
+  transaction_amount real Null,
+  data_hash  VARCHAR(255) NULL,
+  record_type VARCHAR (20) NOT NULL,
+  transaction_status varchar(20) NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+
+CREATE TABLE seller_details (
+  id SERIAL PRIMARY KEY,
+  seller_id VARCHAR (7) NOT NULL,
+  carbon_credit_unit int NOT NULL,
+  carbon_credit_sold int Null,
+  min_price real Not Null,
+  ready_to_buy boolean Null,
+  final_status varchar(20) Null,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TRIGGER set_timestamp_bank_details
+BEFORE UPDATE ON seller_details
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
+
+CREATE TABLE buyer_details (
+  id SERIAL PRIMARY KEY,
+  buyer_id VARCHAR (7) NOT NULL,
+  cap int NOT NULL,
+  consumed_cc int NOT NULL,
+  required_cc int NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TRIGGER set_timestamp_bank_details
+BEFORE UPDATE ON buyer_details
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
